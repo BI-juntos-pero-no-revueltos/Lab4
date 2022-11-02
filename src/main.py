@@ -23,5 +23,6 @@ def make_predictions(dataModel: DataModel):
     df.columns = dataModel.columns()
     model = load("assets/modelo.joblib")
     result = model.predict(df)
-    return result
+    print(result)
+    return {"0": result[0]}
 
