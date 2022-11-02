@@ -15,8 +15,7 @@ class DataModel(BaseModel):
 
     
 #Esta función retorna los nombres de las columnas correspondientes con el modelo exportado en joblib.
-    def _init_(self,arg,*kw):
-      super(DataModel, self)._init_(*arg, **kw)
+
 
     def columns(self):
         return ['Serial No.','GRE Score','TOEFL Score','University Rating','SOP',"LOR",'CGPA','Research']
