@@ -36,21 +36,17 @@ def train_model(LdataModel:list):
    rta={}
    model = load("assets/modelo.joblib")
 
-   i=1
-   for x in LdataModel:
-      df = pd.DataFrame(x, columns=x.keys(), index=[0])
-      df.columns = ['Serial No.','GRE Score','TOEFL Score','University Rating','SOP',"LOR",'CGPA','Research','Admission Points']
-      X = df.drop('Admission Points', axis = 1)
-      y = df['Admission Points']
-      model=model.fit(X,y)
-      i+=1 
+   df = pd.DataFrame.from_dict(LdataModel)
+   df.columns = ['Serial No.','GRE Score','TOEFL Score','University Rating','SOP',"LOR",'CGPA','Research','Admission Points']
    
+   X = df.drop('Admission Points', axis = 1)
+   y = df['Admission Points']
+   model=model.fit(X,y)
+
    r2=model.score(X,y)
-   print(r2)
 
    y_true = y
    y_predicted = model.predict(X)
-
    RMSE=np.sqrt(mse(y_true, y_predicted))
-   print(RMSE)
-   return rta
+   
+   return {"R^2": r2, "RMSE": RMSE}
