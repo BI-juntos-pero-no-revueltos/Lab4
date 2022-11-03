@@ -1,5 +1,10 @@
 Laboratorio 4 - BI
 
+Integrantes:
+
+Luisa Fernanda Fuentes Ladino - 202014321
+Andrés Felipe Lugo Saavedra - 202012538
+
 Instrucciones:
 
 Para ejecutar la API implementada se debe correr el siguiente comando en la terminal de uvicorn: uvicorn  src.main:app --reload.
