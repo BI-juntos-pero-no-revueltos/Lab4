@@ -4,9 +4,9 @@ from joblib import load
 import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error as mse
+import joblib
 
 app = FastAPI()
-
 
 @app.get("/")
 def read_root():
@@ -48,5 +48,6 @@ def train_model(LdataModel:list):
    y_true = y
    y_predicted = model.predict(X)
    RMSE=np.sqrt(mse(y_true, y_predicted))
-   
+
+   joblib.dump(model,"assets/modelo.joblib")
    return {"R^2": r2, "RMSE": RMSE}
